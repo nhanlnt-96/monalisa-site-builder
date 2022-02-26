@@ -1,0 +1,14 @@
+.editor-comp-container {
+  height: 100%;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+
+  .editor-comp-wrapper {
+    border: 1px solid #F1F1F1;
+
+    .rdw-dropdown-selectedtext {
+      text-decoration: none;
+      color: #000000;
+    }
+  }
+}

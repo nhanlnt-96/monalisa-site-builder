@@ -1,0 +1,68 @@
+.upload-comp {
+  .img-preview {
+    width: 150px;
+    height: 150px;
+    position: relative;
+    margin-top: 24px;
+    padding: 12px;
+
+    .remove-img {
+      background-color: transparent;
+      top: 0;
+      right: 0;
+      position: absolute;
+      border: none;
+      outline: none;
+
+      svg {
+        font-size: 20px;
+        color: #ff0000;
+      }
+    }
+
+    img {
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .toast-container {
+    position: fixed !important;
+
+    .toast {
+      background-color: #ffffff;
+    }
+  }
+}
+
+.multi-img-preview {
+  width: 100%;
+  position: relative;
+
+  .img-preview-container {
+    width: 150px;
+    height: 150px;
+    padding: 12px;
+    position: relative;
+    margin-top: 24px;
+
+    .remove-img {
+      background-color: transparent;
+      top: 0;
+      right: 0;
+      position: absolute;
+      border: none;
+      outline: none;
+
+      svg {
+        font-size: 20px;
+        color: #ff0000;
+      }
+    }
+
+    img {
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+}

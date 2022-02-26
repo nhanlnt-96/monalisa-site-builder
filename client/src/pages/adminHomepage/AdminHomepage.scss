@@ -1,0 +1,31 @@
+@import "../../styles/rwd";
+
+.admin-homepage-content {
+  min-height: calc(100vh - 54px);
+  padding-bottom: 0 !important;
+
+  img {
+    width: 60%;
+  }
+
+  .title {
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 24px;
+    font-size: 45px;
+    font-weight: bold;
+  }
+
+  @include mobile {
+    min-height: calc(100vh - 54px);
+    img {
+      width: 100%;
+    }
+    .title {
+      font-size: 25px;
+    }
+  }
+  @include tablet {
+    min-height: calc(100vh - 54px);
+  }
+}

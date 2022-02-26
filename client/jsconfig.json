@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "baseUrl": "src",
+    "paths": {
+      "components/*": [
+        "components/*"
+      ],
+      "pages/*": [
+        "pages/*"
+      ],
+      "assets/*": [
+        "assets/*"
+      ],
+      "configs/*": [
+        "configs/*"
+      ],
+      "helpers/*": [
+        "helpers/*"
+      ],
+      "redux/*": [
+        "redux/*"
+      ],
+      "styles/*": [
+        "styles/*"
+      ]
+    }
+  }
+}

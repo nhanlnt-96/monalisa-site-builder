@@ -1,0 +1,116 @@
+@import "../../styles/rwd";
+
+.main-faq {
+  overflow: hidden;
+  background-color: #9da0ef;
+
+  &-container {
+    padding: 24px 0 !important;
+  }
+}
+
+.main-faq-container .main-faq-content {
+  .question-container, .answer-container {
+    background-size: 100% 100% !important;
+    width: 70%;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .question-container {
+    padding: 50px 24px 24px 150px;
+    background: url("../../assets/shapes/faqShape.svg") no-repeat center;
+
+    .question-desc {
+      font-size: 30px;
+      font-weight: bold;
+      text-align: center;
+    }
+  }
+
+  .answer-container {
+    padding: 50px 48px 36px 150px;
+    background: url("../../assets/shapes/faqShape.svg") no-repeat center;
+    transform: scaleX(-1);
+
+    .answer-desc {
+      transform: scaleX(-1);
+      font-size: 25px;
+    }
+  }
+
+  @include mobile {
+    .question, .answer {
+      padding: 12px;
+    }
+    .question-container, .answer-container {
+      width: 100%;
+      background-image: unset;
+      height: unset;
+      min-height: 150px;
+      border-radius: 12px;
+      background: #12c2e9;
+      background: -webkit-linear-gradient(to right, #f64f59, #c471ed, #12c2e9);
+      background: linear-gradient(to right, #f64f59, #c471ed, #12c2e9);
+
+    }
+    .question-container {
+      padding: 12px;
+
+      .question-desc {
+        font-size: 22px;
+      }
+    }
+    .answer-container {
+      padding: 12px;
+      transform: unset;
+
+      .answer-desc {
+        transform: unset;
+        font-size: 18px;
+      }
+    }
+  }
+  @include tablet {
+    .question, .answer {
+      padding: 12px;
+    }
+    .question-container, .answer-container {
+      width: 100%;
+      background-image: unset;
+      height: unset;
+      min-height: 150px;
+      border-radius: 12px;
+      background: #12c2e9;
+      background: -webkit-linear-gradient(to right, #f64f59, #c471ed, #12c2e9);
+      background: linear-gradient(to right, #f64f59, #c471ed, #12c2e9);
+
+    }
+    .question-container {
+      padding: 12px;
+
+      .question-desc {
+        font-size: 22px;
+      }
+    }
+    .answer-container {
+      padding: 12px;
+      transform: unset;
+
+      .answer-desc {
+        transform: unset;
+        font-size: 18px;
+      }
+    }
+  }
+  @include wide-desktop {
+    .question-container {
+      padding: 50px 80px 24px 200px;
+    }
+    .answer-container {
+      padding: 50px 90px 24px 150px;
+    }
+  }
+}
