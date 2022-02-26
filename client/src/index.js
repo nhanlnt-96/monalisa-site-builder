@@ -9,6 +9,8 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import firebase from "firebase/compat";
 import {BrowserRouter as Router} from "react-router-dom";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 require("dotenv").config();
 AOS.init();
