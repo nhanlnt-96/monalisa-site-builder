@@ -5,7 +5,7 @@ import firebase from "firebase/compat";
 import {getStorage, deleteObject, ref} from "firebase/storage";
 import {AiOutlineDelete} from "react-icons/all";
 import {generateFileName} from "helpers/generateFileName";
-import ToastNoti from "components/mainBanner/component/ToastNoti";
+import ToastNoti from "components/toastNoti/ToastNoti";
 
 import "./UploadImg.scss";
 
