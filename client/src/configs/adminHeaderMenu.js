@@ -3,38 +3,34 @@ export const adminHeaderMenu = [
     label: "Home",
     path: ""
   },
+  // {
+  //   label: "Banner",
+  //   path: "banner"
+  // },
   {
-    label: "Banner",
-    path: "banner"
+    label: "About",
+    path: "about"
   },
-  {
-    label: "Investment Summary",
-    path: "investment"
-  },
-  {
-    label: "How It Works",
-    path: "how-it-works"
-  },
-  {
-    label: "Roadmap",
-    path: "roadmap"
-  },
+  // {
+  //   label: "Roadmap",
+  //   path: "roadmap"
+  // },
   // {
   //   label: "About",
   //   path: "about"
   // },
-  {
-    label: "Collections",
-    path: "collections"
-  },
-  {
-    label: "FAQ",
-    path: "faq"
-  },
-  {
-    label: "Team",
-    path: "team"
-  },
+  // {
+  //   label: "Collections",
+  //   path: "collections"
+  // },
+  // {
+  //   label: "FAQ",
+  //   path: "faq"
+  // },
+  // {
+  //   label: "Team",
+  //   path: "team"
+  // },
   // {
   //   label: "Rarity",
   //   path: "rarity"

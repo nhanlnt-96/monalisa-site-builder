@@ -22,7 +22,7 @@ const AdminHeader = () => {
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container fluid className="admin-header-container">
         <Navbar.Brand onClick={() => navigate("")}>
-          <img src={userData.avatarUrl} alt={userData.fullName}/>
+          <img src={userData?.avatarUrl} alt={userData?.fullName}/>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" className="admin-header-toggle"/>
         <Navbar.Collapse id="responsive-navbar-nav">
@@ -35,7 +35,7 @@ const AdminHeader = () => {
           </Nav>
           <Dropdown>
             <Dropdown.Toggle variant="success" id="dropdown-basic">
-              Signed in as <strong style={{fontWeight: "bolder"}}>{userData.fullName}</strong>
+              Signed in as <strong style={{fontWeight: "bolder"}}>{userData?.fullName}</strong>
             </Dropdown.Toggle>
             <Dropdown.Menu>
               <Dropdown.Item onClick={() => setShowChangePasswordModal(true)}>Change password</Dropdown.Item>
@@ -46,7 +46,7 @@ const AdminHeader = () => {
         </Navbar.Collapse>
       </Container>
       <LogoutConfirmModal showLogout={showLogoutModal} setShowLogout={setShowLogoutModal}/>
-      <ChangePasswordModal showChangePassword={showChangePasswordModal || userData.isFirstLogin}
+      <ChangePasswordModal showChangePassword={showChangePasswordModal || userData?.isFirstLogin}
                            setShowChangePassword={setShowChangePasswordModal}/>
     </Navbar>
   );

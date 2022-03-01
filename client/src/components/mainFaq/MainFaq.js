@@ -1,12 +1,8 @@
 import React, {useEffect} from "react";
 import {Container, Row} from "react-bootstrap";
-import PrimaryTitle from "components/primaryTitle/PrimaryTitle";
-import ScrollDownComp from "components/ScrollDownComp/ScrollDownComp";
 import {useDispatch, useSelector} from "react-redux";
 import {getFaqContent} from "redux/faqContent/faqContentAction";
 import LoadingComp from "components/loadingComp/LoadingComp";
-
-import "./MainFaq.scss";
 
 const MainFaq = () => {
   const dispatch = useDispatch();
@@ -18,7 +14,6 @@ const MainFaq = () => {
     <LoadingComp/>
   ) : (
     <Container fluid className="main-container-height main-faq">
-      <PrimaryTitle title={"faq"}/>
       <Container className="main-faq-container">
         <Row className="main-content-height main-faq-content">
           {
@@ -39,7 +34,6 @@ const MainFaq = () => {
           }
         </Row>
       </Container>
-      <ScrollDownComp/>
     </Container>
   );
 };

@@ -256,3 +256,26 @@ svg fill {
     margin-bottom: 24px;
   }
 }
+
+.about-title {
+  p {
+    color: #ffffff;
+
+    span {
+      color: rgba(var(--bs-primary-rgb), 1) !important;
+    }
+  }
+}
+
+.truncate-text {
+  -webkit-box-orient: vertical;
+  display: block;
+  display: -webkit-box;
+  overflow: hidden !important;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 10;
+}
+
+.un-truncate {
+  -webkit-line-clamp: unset;
+}

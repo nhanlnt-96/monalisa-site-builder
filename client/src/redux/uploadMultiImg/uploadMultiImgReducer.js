@@ -1,9 +1,14 @@
-import {UPLOAD_IMAGES_FAIL, UPLOAD_IMAGES_START, UPLOAD_IMAGES_SUCCESS} from "redux/uploadMultiImg/actionTypes";
+import {
+  UPLOAD_IMAGES_TO_DB_SUCCESS,
+  UPLOAD_IMAGES_FAIL,
+  UPLOAD_IMAGES_START,
+  UPLOAD_IMAGES_SUCCESS
+} from "redux/uploadMultiImg/actionTypes";
 
 const initialState = {
   isLoading: false,
   imgsUploadedData: [],
-  error: ""
+  error: "",
 };
 
 const uploadMultiImgReducer = (state = initialState, action) => {
@@ -12,20 +17,30 @@ const uploadMultiImgReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: true,
-        error: ""
+        error: "",
+        isUploaded: false
       };
     case UPLOAD_IMAGES_SUCCESS:
       return {
         ...state,
         isLoading: false,
-        imgsUploadedData: action.payload
+        imgsUploadedData: action.payload,
       };
     case UPLOAD_IMAGES_FAIL:
       return {
         ...state,
         isLoading: false,
         imgsUploadedData: [],
-        error: action.payload
+        error: action.payload,
+        isUploaded: false
+      };
+    case UPLOAD_IMAGES_TO_DB_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        imgsUploadedData: [],
+        error: "",
+        isUploaded: false
       };
     default:
       return state;

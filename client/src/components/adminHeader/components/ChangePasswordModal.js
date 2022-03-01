@@ -58,7 +58,8 @@ export const ChangePasswordModal = ({
           )
         }
         {
-          userData.isFirstLogin && "To make your account secure, please create a new password to replace the temporary password you were given."
+          userData?.isFirstLogin && "To make your account secure, please create a new password to replace the" +
+          " temporary password you were given."
         }
         <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onLoginBtnClick}>
           <Form className="form-container">
@@ -78,7 +79,7 @@ export const ChangePasswordModal = ({
             
             <div className="footer-btn d-flex justify-content-end align-items-center">
               <Button className="close-modal" onClick={() => setShowChangePassword(false)} variant="secondary"
-                      disabled={userData.isFirstLogin}>Close
+                      disabled={userData?.isFirstLogin}>Close
               </Button>
               <Button variant="primary" type="submit" className="submit-modal"
                       disabled={isLoading}>{isLoading ? "Changing" : "Change"}</Button>

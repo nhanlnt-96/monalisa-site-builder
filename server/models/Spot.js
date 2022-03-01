@@ -5,11 +5,6 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       autoIncrement: true,
     },
-    title: {
-      type: DataTypes.TEXT,
-      unique: false,
-      allowNull: false,
-    },
     imageName: {
       type: DataTypes.STRING,
       allowNull: true,
@@ -24,10 +19,6 @@ module.exports = (sequelize, DataTypes) => {
       unique: false,
       allowNull: false,
     },
-    btnName: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
-  });
+  }, {timestamps: false});
   return Spot;
 };

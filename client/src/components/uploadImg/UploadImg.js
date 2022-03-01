@@ -14,6 +14,7 @@ export const ButtonUpload = styled.button`
   outline: none;
   padding: 12px;
   border-radius: 5px;
+  background-color: #EFEFEF;
 `;
 
 export const UploadImg = ({

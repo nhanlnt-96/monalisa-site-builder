@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const RoadmapDetail = sequelize.define("Roadmap_Detail", {
+  const RoadmapDetail = sequelize.define("RoadmapDetail", {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -23,6 +23,6 @@ module.exports = (sequelize, DataTypes) => {
       unique: false,
       allowNull: true,
     },
-  });
+  }, {timestamps: false});
   return RoadmapDetail;
 };

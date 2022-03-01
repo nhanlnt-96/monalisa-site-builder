@@ -5,16 +5,16 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       autoIncrement: true,
     },
-    question: {
+    title: {
       type: DataTypes.TEXT,
       unique: false,
       allowNull: true,
     },
-    answer: {
+    subTitle: {
       type: DataTypes.TEXT,
       unique: false,
       allowNull: true,
     },
-  });
+  }, {timestamps: false});
   return FAQ;
 };

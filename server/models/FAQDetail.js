@@ -1,29 +1,20 @@
 module.exports = (sequelize, DataTypes) => {
-  const Team = sequelize.define("Team", {
+  const FAQDetail = sequelize.define("FAQDetail", {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
     },
-    name: {
+    question: {
       type: DataTypes.TEXT,
       unique: false,
       allowNull: true,
     },
-    socialUrl: {
-      type: DataTypes.TEXT,
-      unique: false,
-      allowNull: true,
-    },
-    imageName: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
-    imageUrl: {
+    answer: {
       type: DataTypes.TEXT,
       unique: false,
       allowNull: true,
     },
   }, {timestamps: false});
-  return Team;
+  return FAQDetail;
 };

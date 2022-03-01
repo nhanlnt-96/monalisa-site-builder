@@ -1,10 +1,7 @@
 import React, {useEffect} from "react";
 import {Container, Row} from "react-bootstrap";
-import PrimaryTitle from "components/primaryTitle/PrimaryTitle";
 import {useDispatch, useSelector} from "react-redux";
 import {getTeamContent} from "redux/teamContent/teamContentAction";
-
-import "./MainTeam.scss";
 
 const MainTeam = () => {
   const dispatch = useDispatch();
@@ -14,7 +11,6 @@ const MainTeam = () => {
   }, []);
   return (
     <Container fluid className="main-container-height main-team">
-      <PrimaryTitle title={"team"}/>
       <Container className="main-team-container">
         <Row
           className="main-content-height main-team-content d-flex flex-column justify-content-center align-items-center">

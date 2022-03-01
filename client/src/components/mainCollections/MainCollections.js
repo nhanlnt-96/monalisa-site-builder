@@ -1,12 +1,8 @@
 import React, {useEffect} from "react";
-import {collectionData} from "configs/collectionData";
 import {Container} from "react-bootstrap";
-import PrimaryTitle from "components/primaryTitle/PrimaryTitle";
 import {useDispatch, useSelector} from "react-redux";
 import LoadingComp from "components/loadingComp/LoadingComp";
 import {getCollectionsContent} from "redux/collectionsContent/collectionsContentAction";
-
-import "./MainCollections.scss";
 
 const MainCollections = () => {
   const dispatch = useDispatch();
@@ -19,7 +15,6 @@ const MainCollections = () => {
   ) : (
     <Container className="slideshow-comp" fluid>
       <div className="title-container">
-        <PrimaryTitle title={"collection"}/>
       </div>
       <div className="slideshow-comp-slider">
         <div className="slideshow-comp-track"

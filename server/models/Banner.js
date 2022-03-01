@@ -9,25 +9,8 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    subTitle: {
+    connectBtnName: {
       type: DataTypes.STRING,
-      allowNull: true,
-    },
-    content: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
-    connectBtnName:{
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
-    imageName: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
-    imageUrl: {
-      type: DataTypes.TEXT,
-      unique: false,
       allowNull: true,
     },
     bgImageName: {
@@ -39,6 +22,6 @@ module.exports = (sequelize, DataTypes) => {
       unique: false,
       allowNull: true,
     },
-  });
+  }, {timestamps: false});
   return Banner;
 };

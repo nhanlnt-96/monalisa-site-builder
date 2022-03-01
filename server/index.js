@@ -22,9 +22,6 @@ app.use("/user", userRouter);
 const aboutRouter = require("./routes/About");
 app.use("/about", aboutRouter);
 
-const howWorkRouter = require("./routes/HowWork");
-app.use("/how-work", howWorkRouter);
-
 const roadmapRouter = require("./routes/Roadmap");
 app.use("/roadmap", roadmapRouter);
 

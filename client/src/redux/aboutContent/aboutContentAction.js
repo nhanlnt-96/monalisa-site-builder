@@ -29,7 +29,7 @@ export const getAboutContent = () => {
   return async (dispatch) => {
     dispatch(getAboutContentStart());
     await api.get("about").then((res) => {
-      dispatch(getAboutContentSuccess(res.data.data[0]));
+      dispatch(getAboutContentSuccess(res.data.data));
     }).catch((error) => {
       dispatch(getAboutContentFail(error.response.data.error));
     });

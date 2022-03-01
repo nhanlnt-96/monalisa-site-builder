@@ -9,7 +9,8 @@ const {
   ApiSuccess
 } = require("../shared/helper/helper");
 const {
-  About
+  About,
+  AboutImg,
 } = require("../models");
 
 const router = express.Router();
@@ -19,8 +20,43 @@ router.post("/", validateToken, body("content").notEmpty().trim(), async (req, r
   const post = req.body;
   try {
     if (errors.isEmpty()) {
-      await About.create(post);
-      ApiSuccess(201, post, res);
+      await About.create({
+        title: post.title,
+        content: post.content
+      }, {
+        returning: true,
+        plain: true,
+      }).then(async (response) => {
+        await post.imageArr.map(async (val) => {
+          await AboutImg.create({
+            imageName: val.imageName,
+            imageUrl: val.imageUrl,
+            AboutId: response.id
+          });
+        });
+        ApiSuccess(201, response, res);
+      });
+    } else {
+      ApiError(400, errors.array(), res);
+    }
+  } catch (error) {
+    ApiError(400, error, res);
+  }
+});
+
+router.post("/images/", validateToken, body("contentId").notEmpty(), async (req, res) => {
+  const errors = validationResult(req);
+  const post = req.body;
+  try {
+    if (errors.isEmpty()) {
+      post.imageArr.map(async (val) => {
+        await AboutImg.create({
+          imageName: val.imageName,
+          imageUrl: val.imageUrl,
+          AboutId: post.contentId
+        });
+      });
+      ApiSuccess(201, "Posted", res);
     } else {
       ApiError(400, errors.array(), res);
     }
@@ -31,29 +67,38 @@ router.post("/", validateToken, body("content").notEmpty().trim(), async (req, r
 
 router.patch("/update/:id", validateToken, async (req, res) => {
   const {
+    title,
     content,
-    imageName,
-    imageUrl,
-    bgImageName,
-    bgImageUrl
   } = req.body;
   const contentId = req.params.id;
   const checkContentExist = await About.findByPk(contentId);
+  
   try {
     if (checkContentExist) {
       await About.update({
-        content,
-        imageName,
-        imageUrl,
-        bgImageName,
-        bgImageUrl
+        title,
+        content
       }, {
         where: {id: contentId},
         returning: true,
         plain: true,
-      }).then((result) => {
-        ApiSuccess(201, result, res);
       });
+      ApiSuccess(201, "Updated", res);
+    } else {
+      ApiError(400, "Content not found", res);
+    }
+  } catch (error) {
+    ApiError(400, error, res);
+  }
+});
+
+router.delete("/:id", validateToken, async (req, res) => {
+  const imageId = req.params.id;
+  const checkImageExist = await AboutImg.findByPk(imageId);
+  try {
+    if (checkImageExist) {
+      await AboutImg.destroy({where: {id: imageId}});
+      ApiSuccess(200, "Deleted", res);
     } else {
       ApiError(400, "Content not found", res);
     }
@@ -63,8 +108,11 @@ router.patch("/update/:id", validateToken, async (req, res) => {
 });
 
 router.get("/", async (req, res) => {
-  const aboutContent = await About.findAll();
-  ApiSuccess(200, aboutContent, res);
+  await About.findAll({
+    include: AboutImg
+  }).then((response) => {
+    ApiSuccess(200, response, res);
+  });
 });
 
 module.exports = router;

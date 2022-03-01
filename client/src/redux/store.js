@@ -7,7 +7,6 @@ import getAuthReducer from "redux/getAuth/getAuthReducer";
 import bannerContentReducer from "redux/bannerContent/bannerContentReducer";
 import finishUpdateReducer from "redux/finishUpdate/finishUpdateReducer";
 import aboutContentReducer from "redux/aboutContent/aboutContentReducer";
-import howWorkContentReducer from "redux/howWorkContent/howWorkContentReducer";
 import roadmapContentReducer from "redux/roadmapContent/roadmapContentReducer";
 import faqContentReducer from "redux/faqContent/faqContentReducer";
 import teamContentReducer from "redux/teamContent/teamContentReducer";
@@ -22,7 +21,6 @@ const rootReducer = combineReducers({
   bannerContent: bannerContentReducer,
   finishUpdate: finishUpdateReducer,
   aboutContent: aboutContentReducer,
-  howWorkContent: howWorkContentReducer,
   roadmapContent: roadmapContentReducer,
   faqContent: faqContentReducer,
   teamContent: teamContentReducer,

@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import Logo from "../../assets/imgs/logo.png";
 
-const Header = () => {
+const MainHeader = () => {
   const [showNav, setShowNav] = useState(false);
   
   return (
@@ -282,4 +282,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default MainHeader;

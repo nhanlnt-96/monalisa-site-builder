@@ -5,15 +5,18 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       autoIncrement: true,
     },
-    imageName: {
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    subTitle: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    btnName: {
       type: DataTypes.STRING,
       allowNull: true,
     },
-    imageUrl: {
-      type: DataTypes.TEXT,
-      unique: false,
-      allowNull: true,
-    },
-  });
+  }, {timestamps: false});
   return Collections;
 };

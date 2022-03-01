@@ -1,12 +1,7 @@
 import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {Container, Row} from "react-bootstrap";
-import PrimaryTitle from "components/primaryTitle/PrimaryTitle";
-import ScrollDownComp from "components/ScrollDownComp/ScrollDownComp";
-import {roadmapData} from "configs/roadmapData";
 import {getRoadmapContent} from "redux/roadmapContent/roadmapContentAction";
-
-import "./MainRoadmap.scss";
 import LoadingComp from "components/loadingComp/LoadingComp";
 
 const MainRoadmap = () => {
@@ -19,7 +14,6 @@ const MainRoadmap = () => {
     <LoadingComp/>
   ) : (
     <Container fluid className="main-container-height main-roadmap">
-      <PrimaryTitle title={"roadmap"}/>
       <Container className="main-roadmap-container">
         <Row
           className="main-content-height main-roadmap-content d-flex flex-column justify-content-center align-items-center">
@@ -33,7 +27,6 @@ const MainRoadmap = () => {
           }
         </Row>
       </Container>
-      <ScrollDownComp/>
     </Container>
   );
 };

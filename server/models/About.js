@@ -1,9 +1,10 @@
 module.exports = (sequelize, DataTypes) => {
   const About = sequelize.define("About", {
-    id: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
-      autoIncrement: true,
+    title: {
+      type: DataTypes.TEXT,
+      unique: false,
+      allowNull: true,
+      
     },
     content: {
       type: DataTypes.TEXT,
@@ -11,24 +12,11 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: true,
       
     },
-    imageName: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
-    imageUrl: {
-      type: DataTypes.TEXT,
-      unique: false,
-      allowNull: true,
-    },
-    bgImageName: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
-    bgImageUrl: {
-      type: DataTypes.TEXT,
-      unique: false,
-      allowNull: true,
-    },
-  });
+  }, {timestamps: false});
+  About.associate = (models) => {
+    About.hasMany(models.AboutImg, {
+      onDelete: "cascade",
+    });
+  };
   return About;
 };

@@ -27,7 +27,6 @@ const CollectionsEditor = () => {
     setImgInfo([]);
     dispatch(getCollectionsContent());
   };
-  console.log(imgInfo)
   return (
     <Container fluid className="editor-container">
       <Row className="editor-top-container">

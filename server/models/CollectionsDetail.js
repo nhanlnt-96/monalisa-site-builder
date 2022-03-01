@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const CollectionsDetail = sequelize.define("Collections_Detail", {
+  const CollectionsDetail = sequelize.define("CollectionsDetail", {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -14,6 +14,6 @@ module.exports = (sequelize, DataTypes) => {
       unique: false,
       allowNull: true,
     },
-  });
+  }, {timestamps: false});
   return CollectionsDetail;
 };

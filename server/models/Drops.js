@@ -14,6 +14,6 @@ module.exports = (sequelize, DataTypes) => {
       unique: false,
       allowNull: true,
     },
-  });
+  }, {timestamps: false});
   return Drops;
 };

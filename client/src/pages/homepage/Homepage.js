@@ -1,6 +1,7 @@
 import React from "react";
 import MainHeader from "components/mainHeader/MainHeader";
 import MainBanner from "components/mainBanner/MainBanner";
+import MainAbout from "components/mainAbout/MainAbout";
 
 const HomeScreen = () => {
   return (
@@ -8,7 +9,7 @@ const HomeScreen = () => {
       <MainHeader/>
       <div className="flex flex-col">
         <MainBanner/>
-        {/*<About />*/}
+        <MainAbout/>
         {/*<Roadmap />*/}
         {/*<JoinDiscord />*/}
         {/*<GoldenGuest />*/}

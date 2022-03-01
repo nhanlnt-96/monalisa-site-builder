@@ -2,16 +2,17 @@ import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {connect} from "redux/blockchain/blockchainActions";
 import {fetchData} from "redux/data/dataActions";
-import {getBannerContent} from "redux/bannerContent/bannerContentAction";
+// import {getBannerContent} from "redux/bannerContent/bannerContentAction";
 import LoadingComp from "components/loadingComp/LoadingComp";
 import hero from 'assets/imgs/hero-image.png';
+
+export const truncate = (input, len) =>
+  input.length > len ? `${input.substring(0, len)}...` : input;
 
 const MainBanner = () => {
   const dispatch = useDispatch();
   const blockchain = useSelector((state) => state.blockchain);
   const bannerContent = useSelector((state) => state.bannerContent);
-  const truncate = (input, len) =>
-    input.length > len ? `${input.substring(0, len)}...` : input;
   const data = useSelector((state) => state.data);
   const [claimingNft, setClaimingNft] = useState(false);
   const [feedback, setFeedback] = useState(`Click buy to mint your NFT.`);
