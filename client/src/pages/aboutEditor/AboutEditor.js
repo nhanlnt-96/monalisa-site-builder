@@ -58,7 +58,6 @@ const AboutEditor = () => {
       setIsLoading(false);
     }
   };
-  console.log(uploadedImgsData.imgsUploadedData);
   return (
     <Container fluid className="editor-container">
       {

@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, {useRef, useState} from "react";
 import {Container, Spinner} from "react-bootstrap";
 import styled from "styled-components";
 import firebase from "firebase/compat";
@@ -23,11 +23,13 @@ export const UploadImg = ({
                             setImgInfo,
                             currentImgName,
                             currentImgUrl,
+                            isAllowDeleteImg,
+                            setIsDeletedImg,
+                            isDeletedImg
                           }) => {
   const hiddenFileInput = useRef(null);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState({
-    status: false,
     msg: "",
     titleNoti: ""
   });
@@ -46,34 +48,33 @@ export const UploadImg = ({
     }, async () => {
       await storageRef.snapshot.ref.getDownloadURL().then((url) => {
         setImgInfo({
-          imgName: fileName,
-          imgUrl: url
+          imageName: fileName,
+          imageUrl: url
         });
         setIsLoading(false);
       });
     });
   };
-  const onRemoveImgUpload = (imgFolder, imgName) => {
-    if (currentImgUrl && !imgInfo.imgName && !imgInfo.imgUrl) {
+  const onRemoveImgUpload = (imgFolder, imageName) => {
+    if (!isAllowDeleteImg) {
       setErrorMsg({
-        status: true,
         msg: "You cannot remove this image. If you want to change current image, please upload the new one.",
         titleNoti: "Error"
       });
     } else {
       setIsLoading(true);
       const storage = getStorage();
-      const desertRef = ref(storage, `${imgFolder}/${imgName}`);
+      const desertRef = ref(storage, `${imgFolder}/${imageName}`);
       deleteObject(desertRef).then(() => {
         setIsLoading(false);
-        if (imgInfo.imgName || imgInfo.imgUrl) {
+        if (imgInfo.imageName || imgInfo.imageUrl) {
           setImgInfo({
-            imgName: "",
-            imgUrl: ""
+            imageName: "",
+            imageUrl: ""
           });
         }
+        setIsDeletedImg(true);
         setErrorMsg({
-          status: true,
           msg: "Removed image.",
           titleNoti: "Successful"
         });
@@ -83,40 +84,34 @@ export const UploadImg = ({
       });
     }
   };
-  useEffect(() => {
-    if (errorMsg.status) {
-      setTimeout(() => {
-        setErrorMsg({
-          status: false,
-          msg: ""
-        });
-      }, 2000);
-    }
-  }, [errorMsg.status]);
   return (
     <Container fluid className="upload-comp d-flex flex-column justify-content-center align-items-center">
       {
-        !imgInfo.imgUrl && (
+        (!imgInfo.imageUrl || !currentImgUrl) && (
           <div className="upload-btn">
-            <input ref={hiddenFileInput} type="file" style={{display: "none"}} onChange={onUploadHandler}/>
+            <input
+              ref={hiddenFileInput}
+              type="file"
+              style={{display: "none"}}
+              onChange={onUploadHandler}/>
             <ButtonUpload onClick={onUploadBtnClick}>Upload image</ButtonUpload>
           </div>
         )
       }
       {
-        imgInfo.imgUrl ? (
+        imgInfo.imageUrl ? (
           <div className="img-preview d-flex flex-column justify-content-center align-items-center">
             <button title="Remove image" className="remove-img"
-                    onClick={() => onRemoveImgUpload(imgFolder, imgInfo.imgName)}>
+                    onClick={() => onRemoveImgUpload(imgFolder, imgInfo.imageName)}>
               <AiOutlineDelete/>
             </button>
-            <img src={imgInfo.imgUrl} alt="liberT-admin"/>
+            <img src={imgInfo.imageUrl} alt="liberT-admin"/>
           </div>
         ) : isLoading ? (
           <div style={{marginTop: 24}}>
             <Spinner animation="grow" variant="primary"/>
           </div>
-        ) : currentImgUrl && (
+        ) : (currentImgUrl && !isDeletedImg) && (
           <div className="img-preview d-flex flex-column justify-content-center align-items-center">
             <button title="Remove image" className="remove-img"
                     onClick={() => onRemoveImgUpload(imgFolder, currentImgName)}>
@@ -126,11 +121,7 @@ export const UploadImg = ({
           </div>
         )
       }
-      {
-        errorMsg.status && (
-          <ToastNoti errorMsg={errorMsg.msg} position={"top-center"} titleNoti={errorMsg.titleNoti}/>
-        )
-      }
+      <ToastNoti errorMsg={errorMsg.msg} position={"top-center"} titleNoti={errorMsg.titleNoti}/>
     </Container>
   );
 };

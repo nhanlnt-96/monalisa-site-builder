@@ -41,10 +41,10 @@ export const adminRoutes = {
       path: "about",
       module: <AboutEditor/>,
     },
-    // {
-    //   path: "roadmap",
-    //   module: <RoadmapEditor/>
-    // },
+    {
+      path: "roadmap",
+      module: <RoadmapEditor/>
+    },
     // {
     //   path: "faq",
     //   module: <FaqEditor/>

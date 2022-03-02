@@ -262,7 +262,8 @@ svg fill {
     color: #ffffff;
 
     span {
-      color: rgba(var(--bs-primary-rgb), 1) !important;
+      --tw-text-opacity: 1;
+      color: rgba(189, 255, 0, var(--tw-text-opacity)) !important;
     }
   }
 }
@@ -278,4 +279,20 @@ svg fill {
 
 .un-truncate {
   -webkit-line-clamp: unset;
+}
+
+.bg-secondary {
+  --tw-bg-opacity: 1;
+  background-color: rgba(21, 21, 21, var(--tw-bg-opacity)) !important;
+}
+
+.text-primary {
+  --tw-text-opacity: 1;
+  color: rgba(189, 255, 0, var(--tw-text-opacity)) !important;
+}
+
+.roadmap-custom-wrap {
+  @include mobile {
+    flex-wrap: wrap !important;
+  }
 }

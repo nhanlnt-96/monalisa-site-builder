@@ -111,7 +111,7 @@ const MainBanner = () => {
   
   useEffect(() => {
     getConfig();
-    console.log(feedback);
+    // console.log(feedback);
   }, []);
   
   useEffect(() => {
@@ -194,7 +194,7 @@ const MainBanner = () => {
                   {blockchain.account === "" ||
                   blockchain.smartContract === null ? (
                     <>
-                      {console.log(blockchain)}
+                      {/*{console.log(blockchain)}*/}
                       <p className="text-default font-semibold text-xs lg:text-base">
                         Connect to the {CONFIG.NETWORK.NAME} network
                       </p>

@@ -11,14 +11,10 @@ export const adminHeaderMenu = [
     label: "About",
     path: "about"
   },
-  // {
-  //   label: "Roadmap",
-  //   path: "roadmap"
-  // },
-  // {
-  //   label: "About",
-  //   path: "about"
-  // },
+  {
+    label: "Roadmap",
+    path: "roadmap"
+  },
   // {
   //   label: "Collections",
   //   path: "collections"
