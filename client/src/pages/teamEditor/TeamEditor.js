@@ -13,37 +13,44 @@ import LoadingComp from "components/loadingComp/LoadingComp";
 const TeamEditor = () => {
   const dispatch = useDispatch();
   const teamContent = useSelector((state) => state.teamContent);
+  const finishedUpdate = useSelector((state) => state.finishUpdate);
+  const [isDeletedImg, setIsDeletedImg] = useState(false);
   const [memberSelected, setMemberSelected] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [teamMemberName, setTeamMemberName] = useState("");
-  const [teamMemberPosition, setTeamMemberPosition] = useState("");
+  const [teamMemberSocialUrl, setTeamMemberSocialUrl] = useState("");
   const [imgInfo, setImgInfo] = useState({
-    imgName: "",
-    imgUrl: ""
+    imageName: "",
+    imageUrl: ""
   });
   const onSelectMemberHandler = (index) => {
     setMemberSelected(index);
   };
   const onUpdateBtnClick = async () => {
     setIsLoading(true);
-    const response = await api.patch(`/team/update/${teamContent.teamData[memberSelected].id}`, {
-      name: teamMemberName || teamContent.teamData[memberSelected].name,
-      position: teamMemberPosition || teamContent.teamData[memberSelected].position,
-      imageName: imgInfo.imgName || teamContent.teamData[memberSelected]
-        .imageName,
-      imageUrl: imgInfo.imgUrl || teamContent.teamData[memberSelected]
-        .imageUrl,
-    });
-    if (response.data.success) {
-      setIsLoading(false);
-      dispatch(finishUpdate(true));
-      setTeamMemberName("");
-      setTeamMemberPosition("");
-      setImgInfo({
-        imgName: "",
-        imgUrl: ""
+    try {
+      const response = await api.patch(`/team/update/${teamContent.teamData[memberSelected].id}`, {
+        name: teamMemberName || teamContent.teamData[memberSelected].name,
+        position: teamMemberSocialUrl || teamContent.teamData[memberSelected].socialUrl,
+        imageName: imgInfo.imageName || teamContent.teamData[memberSelected]
+          .imageName,
+        imageUrl: imgInfo.imageUrl || teamContent.teamData[memberSelected]
+          .imageUrl,
       });
-      dispatch(getTeamContent());
+      if (response.data.success) {
+        setIsLoading(false);
+        dispatch(finishUpdate(true));
+        setTeamMemberName("");
+        setTeamMemberSocialUrl("");
+        setImgInfo({
+          imageName: "",
+          imageUrl: ""
+        });
+        dispatch(getTeamContent());
+      }
+    } catch (e) {
+      console.log(e);
+      setIsLoading(false);
     }
   };
   return (
@@ -74,22 +81,28 @@ const TeamEditor = () => {
             <Row className="editor-top-container">
               <Col lg={6} md={6} sm={12} className="editor-item">
                 <EditorTitle title={"Member's position"}/>
-                <EditorComp newValue={setTeamMemberPosition}
-                            content={teamContent.teamData[memberSelected]?.position || ""}/>
+                <EditorComp newValue={setTeamMemberSocialUrl}
+                            content={teamContent.teamData[memberSelected]?.socialUrl || ""}/>
               </Col>
               <Col lg={6} md={6} sm={12} className="editor-item">
-                <EditorTitle title={"Image Upload"}/>
-                <UploadImg imgFolder={"team"} imgInfo={imgInfo} setImgInfo={setImgInfo}
+                <EditorTitle title={(teamContent.teamData[memberSelected]?.imageUrl || finishedUpdate.isFinishUpdate) ? "Images" +
+                  " uploaded" : imgInfo.imageUrl ? "Images Preview" : "Images uploaded"}/>
+                <UploadImg imgFolder={"team"}
+                           imgInfo={imgInfo}
+                           setImgInfo={setImgInfo}
                            currentImgName={teamContent.teamData[memberSelected]
                              ?.imageName}
                            currentImgUrl={teamContent.teamData[memberSelected]
-                             ?.imageUrl}/>
+                             ?.imageUrl}
+                           isAllowDeleteImg={false}
+                           isDeletedImg={isDeletedImg}
+                           setIsDeletedImg={setIsDeletedImg}/>
               </Col>
             </Row>
             <Row className="editor-update-button">
               <div className="update-button-container d-flex justify-content-center align-items-center">
                 <Button className="update-btn" onClick={onUpdateBtnClick}
-                        disabled={isLoading || (memberSelected === null)}>{isLoading ? "Updating" : "Update"}</Button>
+                        disabled={isLoading || typeof (memberSelected) !== "number" || (!teamMemberName && !teamMemberSocialUrl && (!isDeletedImg && !imgInfo.imageUrl))}>{isLoading ? "Updating" : "Update"}</Button>
               </div>
             </Row>
           </>

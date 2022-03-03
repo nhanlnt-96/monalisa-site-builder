@@ -7,6 +7,7 @@ import MainSpot from "components/mainSpot/MainSpot";
 import MainCollections from "components/mainCollections/MainCollections";
 import MainSpecs from "components/mainSpecs/MainSpecs";
 import MainDrops from "components/mainDrops/MainDrops";
+import MainTeam from "components/mainTeam/MainTeam";
 
 const HomeScreen = () => {
   return (
@@ -20,6 +21,7 @@ const HomeScreen = () => {
         <MainCollections/>
         <MainSpecs/>
         <MainDrops/>
+        <MainTeam/>
       </div>
     </>
   );

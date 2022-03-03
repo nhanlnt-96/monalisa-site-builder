@@ -63,14 +63,14 @@ export const adminRoutes = {
     {
       path: "drops",
       module: <DropsEditor/>
-    }
+    },
+    {
+      path: "team",
+      module: <TeamEditor/>
+    },
     // {
     //   path: "faq",
     //   module: <FaqEditor/>
-    // },
-    // {
-    //   path: "team",
-    //   module: <TeamEditor/>
     // },
   ]
 };

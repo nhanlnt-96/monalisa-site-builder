@@ -93,18 +93,14 @@ export const UploadImg = ({
   };
   return (
     <Container fluid className="upload-comp d-flex flex-column justify-content-center align-items-center">
-      {
-        (!currentImgUrl) && (
-          <div className="upload-btn">
-            <input
-              ref={hiddenFileInput}
-              type="file"
-              style={{display: "none"}}
-              onChange={(e) => onUploadHandler(e, currentImgName)}/>
-            <ButtonUpload onClick={onUploadBtnClick}>Upload new image</ButtonUpload>
-          </div>
-        )
-      }
+      <div className="upload-btn">
+        <input
+          ref={hiddenFileInput}
+          type="file"
+          style={{display: "none"}}
+          onChange={(e) => onUploadHandler(e, currentImgName)}/>
+        <ButtonUpload onClick={onUploadBtnClick}>Upload new image</ButtonUpload>
+      </div>
       {
         imgInfo.imageUrl ? (
           <div className="img-preview d-flex flex-column justify-content-center align-items-center">

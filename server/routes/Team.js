@@ -13,20 +13,18 @@ const router = express.Router();
 router.post("/", validateToken, async (req, res) => {
   const post = req.body;
   try {
-    await post.map(async (val) => {
-      const {
-        name,
-        position,
-        imageName,
-        imageUrl
-      } = val;
-      if (name || position || imageName || imageUrl) {
-        await Team.create(val);
-      } else {
-        ApiError(400, "Team's content can not empty.", res);
-      }
-    });
-    ApiSuccess(201, post, res);
+    const {
+      name,
+      socialUrl,
+      imageName,
+      imageUrl
+    } = post;
+    if (name || socialUrl || imageName || imageUrl) {
+      await Team.create(post);
+      ApiSuccess(201, post, res);
+    } else {
+      ApiError(400, "Team's content can not empty.", res);
+    }
   } catch (error) {
     ApiError(400, error, res);
   }
@@ -35,7 +33,7 @@ router.post("/", validateToken, async (req, res) => {
 router.patch("/update/:id", validateToken, async (req, res) => {
   const {
     name,
-    position,
+    socialUrl,
     imageName,
     imageUrl
   } = req.body;
@@ -45,7 +43,7 @@ router.patch("/update/:id", validateToken, async (req, res) => {
     if (checkContentExist) {
       await Team.update({
         name,
-        position,
+        socialUrl,
         imageName,
         imageUrl
       }, {
