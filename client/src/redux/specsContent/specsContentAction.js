@@ -11,10 +11,10 @@ export const getSpecsContentStart = () => {
   };
 };
 
-export const getSpecsContentSuccess = (bannerData) => {
+export const getSpecsContentSuccess = (specsData) => {
   return {
     type: GET_SPECS_CONTENT_SUCCESS,
-    payload: bannerData
+    payload: specsData
   };
 };
 

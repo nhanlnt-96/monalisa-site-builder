@@ -11,6 +11,7 @@ import CollectionsEditor from "pages/collectionsEditor/CollectionsEditor";
 import AboutEditor from "pages/aboutEditor/AboutEditor";
 import SpotEditor from "pages/spotEditor/SpotEditor";
 import SpecsEditor from "pages/specsEditor/SpecsEditor";
+import DropsEditor from "pages/dropsEditor/DropsEditor";
 
 export const mainRoutes = [
   {
@@ -58,6 +59,10 @@ export const adminRoutes = {
     {
       path: "the-specs",
       module: <SpecsEditor/>
+    },
+    {
+      path: "drops",
+      module: <DropsEditor/>
     }
     // {
     //   path: "faq",

@@ -48,7 +48,7 @@ const SpecsEditor = () => {
                    md={6}
                    sm={12}
                    className="editor-item d-flex flex-column justify-content-center align-items-center">
-                <EditorTitle title={(specsSelected === null) ? "Select Spot's item to edit" : `Editing Spot item ${specsSelected + 1}`}/>
+                <EditorTitle title={(specsSelected === null) ? "Select Spec's item to edit" : `Editing Spec item ${specsSelected + 1}`}/>
                 <div className="select-part-button-container">
                   {
                     specsContent.specsData?.map((val, index) => (
@@ -60,7 +60,7 @@ const SpecsEditor = () => {
                 </div>
               </Col>
               <Col lg={6} md={6} sm={12} className="editor-item">
-                <EditorTitle title={"Spot's Description"}/>
+                <EditorTitle title={"Spec's Description"}/>
                 <EditorComp newValue={setSpecsContentInput}
                             content={specsContent.specsData[specsSelected]?.content || ""}/>
               </Col>

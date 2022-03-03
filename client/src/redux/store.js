@@ -14,6 +14,7 @@ import collectionsContentReducer from "redux/collectionsContent/collectionsConte
 import uploadMultiImgReducer from "redux/uploadMultiImg/uploadMultiImgReducer";
 import spotContentReducer from "redux/spotContent/spotContentReducer";
 import specsContentReducer from "redux/specsContent/specsContentReducer";
+import dropsContentReducer from "redux/dropsContent/dropsContentReducer";
 
 const rootReducer = combineReducers({
   blockchain: blockchainReducer,
@@ -29,7 +30,8 @@ const rootReducer = combineReducers({
   collectionsContent: collectionsContentReducer,
   uploadedImgsData: uploadMultiImgReducer,
   spotContent: spotContentReducer,
-  specsContent: specsContentReducer
+  specsContent: specsContentReducer,
+  dropsContent:dropsContentReducer
 });
 
 const middleware = [thunk];
