@@ -5,6 +5,8 @@ import MainAbout from "components/mainAbout/MainAbout";
 import MainRoadmap from "components/mainRoadmap/MainRoadmap";
 import MainSpot from "components/mainSpot/MainSpot";
 import MainCollections from "components/mainCollections/MainCollections";
+import MainSpecs from "components/mainSpecs/MainSpecs";
+import MainDrops from "components/mainDrops/MainDrops";
 
 const HomeScreen = () => {
   return (
@@ -16,6 +18,8 @@ const HomeScreen = () => {
         <MainRoadmap/>
         <MainSpot/>
         <MainCollections/>
+        <MainSpecs/>
+        <MainDrops/>
       </div>
     </>
   );
