@@ -8,6 +8,8 @@ import MainCollections from "components/mainCollections/MainCollections";
 import MainSpecs from "components/mainSpecs/MainSpecs";
 import MainDrops from "components/mainDrops/MainDrops";
 import MainTeam from "components/mainTeam/MainTeam";
+import MainFaq from "components/mainFaq/MainFaq";
+import Footer from "components/footer/Footer";
 
 const HomeScreen = () => {
   return (
@@ -22,6 +24,8 @@ const HomeScreen = () => {
         <MainSpecs/>
         <MainDrops/>
         <MainTeam/>
+        <MainFaq/>
+        <Footer/>
       </div>
     </>
   );
