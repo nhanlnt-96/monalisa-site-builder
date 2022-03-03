@@ -4,6 +4,7 @@ import MainBanner from "components/mainBanner/MainBanner";
 import MainAbout from "components/mainAbout/MainAbout";
 import MainRoadmap from "components/mainRoadmap/MainRoadmap";
 import MainSpot from "components/mainSpot/MainSpot";
+import MainCollections from "components/mainCollections/MainCollections";
 
 const HomeScreen = () => {
   return (
@@ -14,12 +15,7 @@ const HomeScreen = () => {
         <MainAbout/>
         <MainRoadmap/>
         <MainSpot/>
-        {/*<JoinDiscord />*/}
-        {/*<GoldenGuest />*/}
-        {/*<Feature />*/}
-        {/*<Team />*/}
-        {/*<Faq />*/}
-        {/*<Footer />*/}
+        <MainCollections/>
       </div>
     </>
   );
