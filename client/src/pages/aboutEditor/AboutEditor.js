@@ -8,7 +8,7 @@ import MainAbout from "components/mainAbout/MainAbout";
 import {useDispatch, useSelector} from "react-redux";
 import {getAboutContent} from "redux/aboutContent/aboutContentAction";
 import api from "configs/axios";
-import {finishUpdate, finishUploadImg} from "redux/finishUpdate/finishUpdateAction";
+import {finishUploadImg} from "redux/finishUpdate/finishUpdateAction";
 
 const AboutEditor = () => {
   const dispatch = useDispatch();

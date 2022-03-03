@@ -36,8 +36,32 @@ export const UploadImg = ({
   const onUploadBtnClick = (e) => {
     hiddenFileInput.current.click();
   };
-  const onUploadHandler = (e) => {
+  const removeImgFromFirebase = (imgFolder, imageName, isShowMsg) => {
+    const storage = getStorage();
+    const desertRef = ref(storage, `${imgFolder}/${imageName}`);
+    deleteObject(desertRef).then(() => {
+      if (imgInfo.imageName || imgInfo.imageUrl) {
+        setImgInfo({
+          imageName: "",
+          imageUrl: ""
+        });
+      }
+      setIsDeletedImg(true);
+      if (isShowMsg) {
+        setErrorMsg({
+          msg: "Removed image.",
+          titleNoti: "Successful"
+        });
+      }
+    }).catch((error) => {
+      console.error(error);
+    });
+  };
+  const onUploadHandler = async (e, currentImgName) => {
     setIsLoading(true);
+    if (!isAllowDeleteImg) {
+      await removeImgFromFirebase(imgFolder, currentImgName, false);
+    }
     const fileUploaded = e.target.files[0];
     const fileName = generateFileName(fileUploaded.name);
     const storageRef = firebase.storage().ref(`${imgFolder}/${fileName}`).put(fileUploaded);
@@ -55,7 +79,7 @@ export const UploadImg = ({
       });
     });
   };
-  const onRemoveImgUpload = (imgFolder, imageName) => {
+  const onRemoveImgUpload = async (imgFolder, imageName) => {
     if (!isAllowDeleteImg) {
       setErrorMsg({
         msg: "You cannot remove this image. If you want to change current image, please upload the new one.",
@@ -63,38 +87,21 @@ export const UploadImg = ({
       });
     } else {
       setIsLoading(true);
-      const storage = getStorage();
-      const desertRef = ref(storage, `${imgFolder}/${imageName}`);
-      deleteObject(desertRef).then(() => {
-        setIsLoading(false);
-        if (imgInfo.imageName || imgInfo.imageUrl) {
-          setImgInfo({
-            imageName: "",
-            imageUrl: ""
-          });
-        }
-        setIsDeletedImg(true);
-        setErrorMsg({
-          msg: "Removed image.",
-          titleNoti: "Successful"
-        });
-      }).catch((error) => {
-        setIsLoading(false);
-        console.error(error);
-      });
+      await removeImgFromFirebase(imgFolder, imageName, true);
+      setIsLoading(false);
     }
   };
   return (
     <Container fluid className="upload-comp d-flex flex-column justify-content-center align-items-center">
       {
-        (!imgInfo.imageUrl || !currentImgUrl) && (
+        (!currentImgUrl) && (
           <div className="upload-btn">
             <input
               ref={hiddenFileInput}
               type="file"
               style={{display: "none"}}
-              onChange={onUploadHandler}/>
-            <ButtonUpload onClick={onUploadBtnClick}>Upload image</ButtonUpload>
+              onChange={(e) => onUploadHandler(e, currentImgName)}/>
+            <ButtonUpload onClick={onUploadBtnClick}>Upload new image</ButtonUpload>
           </div>
         )
       }
@@ -121,7 +128,10 @@ export const UploadImg = ({
           </div>
         )
       }
-      <ToastNoti errorMsg={errorMsg.msg} position={"top-center"} titleNoti={errorMsg.titleNoti}/>
+      <ToastNoti errorMsg={errorMsg.msg}
+                 setErrorMsg={setErrorMsg}
+                 position={"top-center"}
+                 titleNoti={errorMsg.titleNoti}/>
     </Container>
   );
 };

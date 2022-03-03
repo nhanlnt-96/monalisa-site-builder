@@ -43,6 +43,14 @@ const EditorComp = ({
         wrapperClassName="editor-comp-wrapper"
         editorClassName="editor-comp-edit"
         onEditorStateChange={onEditorStateChange}
+        toolbar={
+          {
+            options: ["inline", "blockType", "textAlign", "colorPicker", "remove", "history"],
+            colorPicker: {
+              colors: ["rgba(189, 255, 0, 1)", "rgba(153, 153, 153, 1)"],
+            },
+          }
+        }
       />
     </Container>
   );

@@ -9,6 +9,7 @@ import FaqEditor from "pages/faqEditor/FAQEditor";
 import TeamEditor from "pages/teamEditor/TeamEditor";
 import CollectionsEditor from "pages/collectionsEditor/CollectionsEditor";
 import AboutEditor from "pages/aboutEditor/AboutEditor";
+import SpotEditor from "pages/spotEditor/SpotEditor";
 
 export const mainRoutes = [
   {
@@ -44,6 +45,10 @@ export const adminRoutes = {
     {
       path: "roadmap",
       module: <RoadmapEditor/>
+    },
+    {
+      path: "spot",
+      module: <SpotEditor/>
     },
     // {
     //   path: "faq",

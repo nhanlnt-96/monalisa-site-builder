@@ -15,6 +15,10 @@ export const adminHeaderMenu = [
     label: "Roadmap",
     path: "roadmap"
   },
+  {
+    label: "Spot",
+    path: "spot"
+  },
   // {
   //   label: "Collections",
   //   path: "collections"

@@ -4,7 +4,8 @@ import {Toast, ToastContainer} from "react-bootstrap";
 const ToastNoti = ({
                      errorMsg,
                      position,
-                     titleNoti
+                     titleNoti,
+                     setErrorMsg
                    }) => {
   const [showToast, setShowToast] = useState(false);
   useEffect(() => {
@@ -12,6 +13,10 @@ const ToastNoti = ({
       setShowToast(true);
       setTimeout(() => {
         setShowToast(false);
+        setErrorMsg({
+          msg: "",
+          titleNoti: ""
+        });
       }, 2000);
     }
   }, [errorMsg]);
