@@ -41,7 +41,7 @@
   "author": "Monalisa",
   "license": "MIT",
   "scripts": {
-    "start": "PORT=3001 craco start",
+    "start": "craco start",
     "build": "craco build && firebase deploy",
     "test": "craco test"
   },
