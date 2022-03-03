@@ -228,19 +228,25 @@ svg fill {
 }
 
 .editor-container {
-  .editor-item .select-part-button-item {
-    border: none;
-    outline: none;
-    padding: 12px;
-    color: #ffffff;
-    transition: .2s linear;
-
-    &:not(:first-child) {
-      margin-left: 12px;
+  .editor-item {
+    .select-part-button-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
     }
 
-    &:hover {
-      background-color: #1e3799 !important;
+    .select-part-button-item {
+      border: none;
+      outline: none;
+      padding: 12px;
+      color: #ffffff;
+      transition: .2s linear;
+
+      &:hover {
+        background-color: #1e3799 !important;
+      }
     }
   }
 

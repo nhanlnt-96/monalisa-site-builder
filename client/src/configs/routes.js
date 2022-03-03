@@ -10,6 +10,7 @@ import TeamEditor from "pages/teamEditor/TeamEditor";
 import CollectionsEditor from "pages/collectionsEditor/CollectionsEditor";
 import AboutEditor from "pages/aboutEditor/AboutEditor";
 import SpotEditor from "pages/spotEditor/SpotEditor";
+import SpecsEditor from "pages/specsEditor/SpecsEditor";
 
 export const mainRoutes = [
   {
@@ -53,6 +54,10 @@ export const adminRoutes = {
     {
       path: "collections",
       module: <CollectionsEditor/>
+    },
+    {
+      path: "the-specs",
+      module: <SpecsEditor/>
     }
     // {
     //   path: "faq",
