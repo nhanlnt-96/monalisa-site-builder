@@ -1,4 +1,6 @@
 import React, {useState} from "react";
+import arrow from "assets/imgs/icons/arrow-down.svg";
+import arrowUp from "assets/imgs/icons/arrow-up.svg";
 
 export const SingleFaq = ({
                             title,
@@ -12,17 +14,15 @@ export const SingleFaq = ({
           className="FrequentlyAsked__question header-bg rounded flex justify-between cursor-pointer"
           onClick={() => setIsActive(!isActive)}
         >
-          <p className="text-base md:text-xl font-bold text-default uppercase ">
-            {title}
-          </p>
+          <div className="text-base md:text-xl font-bold text-default uppercase "
+               dangerouslySetInnerHTML={{__html: title}}/>
           <span>
             <img src={isActive ? arrowUp : arrow} alt=""/>
           </span>
         </div>
         {isActive && (
-          <p className="py-4 text-base font-light md:text-lg text-default">
-            {content}
-          </p>
+          <div className="py-4 text-base font-light md:text-lg text-default"
+               dangerouslySetInnerHTML={{__html: content}}/>
         )}
       </div>
     </>

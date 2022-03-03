@@ -68,9 +68,9 @@ export const adminRoutes = {
       path: "team",
       module: <TeamEditor/>
     },
-    // {
-    //   path: "faq",
-    //   module: <FaqEditor/>
-    // },
+    {
+      path: "faq",
+      module: <FaqEditor/>
+    },
   ]
 };
