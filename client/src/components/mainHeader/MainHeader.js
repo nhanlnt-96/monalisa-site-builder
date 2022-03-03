@@ -137,7 +137,7 @@ const MainHeader = () => {
                     About
                   </div>
                 </a>
-                <a href="#feature" target="_self">
+                <a href="#features" target="_self">
                   <div className="text-default hover:text-primary px-3 py-2 font-medium">
                     Features
                   </div>
