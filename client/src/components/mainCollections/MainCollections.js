@@ -39,13 +39,10 @@ const settings = {
 
 const MainCollections = () => {
   const dispatch = useDispatch();
-  const collectionsContent = {
-    isLoading: false
-  };
-  // const collectionsContent = useSelector((state) => state.collectionsContent);
-  // useEffect(() => {
-  //   dispatch(getCollectionsContent());
-  // }, []);
+  const collectionsContent = useSelector((state) => state.collectionsContent);
+  useEffect(() => {
+    dispatch(getCollectionsContent());
+  }, []);
   return collectionsContent.isLoading ? (
     <LoadingComp/>
   ) : (
@@ -55,14 +52,8 @@ const MainCollections = () => {
           Categories
         </h2>
         <div className="flex flex-col items-center sm:items-start text-sm mt-4 sm:mt-auto sm:text-lg text-gray">
-          <div className="bcm text-center sm:text-left mb-5 leading-relaxed">
-            <p>
-              <strong></strong>
-              <br/>
-              Backgrounds 20+, Skins 18+, Outfit 60+, Outfit 60+, Eyes 20+,
-              Face accessories 70+
-            </p>
-          </div>
+          <div className="bcm text-center sm:text-left mb-5 leading-relaxed"
+               dangerouslySetInnerHTML={{__html: collectionsContent.collectionsData?.collectionsContent?.subTitle}}/>
           <div className="inline-block btn-gradient p-0.5 btn-animate max-w-max mx-auto">
             <a
               href="https://discord.gg/KbEtpY4EVS"
@@ -76,46 +67,13 @@ const MainCollections = () => {
       </div>
       <div>
         <Slider {...settings}>
-          <div className="mx-2">
-            <img src={sliderImage1} alt="" className="max-w-full"/>
-          </div>
-          
-          <div className="mx-2">
-            <img src={sliderImage2} alt="" className="max-w-full"/>
-          </div>
-          
-          <div className="mx-2">
-            <img src={sliderImage3} alt="" className="max-w-full"/>
-          </div>
-          
-          <div className="mx-2">
-            <img src={sliderImage4} alt="" className="max-w-full"/>
-          </div>
-          <div className="mx-2">
-            <img src={sliderImage5} alt="" className="max-w-full"/>
-          </div>
-          <div className="mx-2">
-            <img src={sliderImage6} alt="" className="max-w-full"/>
-          </div>
-          
-          <div className="mx-2">
-            <img src={sliderImage7} alt="" className="max-w-full"/>
-          </div>
-          
-          <div className="mx-2">
-            <img src={sliderImage8} alt="" className="max-w-full"/>
-          </div>
-          
-          <div className="mx-2">
-            <img src={sliderImage9} alt="" className="max-w-full"/>
-          </div>
-          <div className="mx-2">
-            <img src={sliderImage10} alt="" className="max-w-full"/>
-          </div>
-          
-          <div className="mx-2">
-            <img src={sliderImage11} alt="" className="max-w-full"/>
-          </div>
+          {
+            collectionsContent.collectionsData?.collectionsImgContent?.map((val, index) => (
+              <div key={index} className="mx-2">
+                <img src={val.imageUrl} alt={val.imageName} className="max-w-full"/>
+              </div>
+            ))
+          }
         </Slider>
       </div>
     </section>

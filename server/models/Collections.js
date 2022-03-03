@@ -13,10 +13,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    btnName: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
   }, {timestamps: false});
   return Collections;
 };

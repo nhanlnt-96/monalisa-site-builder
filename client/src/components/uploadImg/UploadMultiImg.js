@@ -10,7 +10,8 @@ export const UploadMultiImg = ({
                                  imgFolder,
                                  currentImg,
                                  imageLimit,
-                                 previewPosition
+                                 previewPosition,
+                                 uploadFor
                                }) => {
   const dispatch = useDispatch();
   const uploadedImgsData = useSelector((state) => state.uploadedImgsData);
@@ -35,9 +36,9 @@ export const UploadMultiImg = ({
   };
   return (
     <Container fluid
-               className="upload-comp d-flex flex-column justify-content-center align-items-center overflow-scroll">
+               className="upload-comp d-flex flex-column justify-content-center align-items-center">
       {
-        currentImg?.length < imageLimit && (
+        (currentImg?.length < imageLimit || uploadFor === "collections") && (
           <div className="upload-btn">
             <input ref={hiddenFilesInput} type="file" style={{display: "none"}} onChange={onUploadHandler}
                    multiple={true}/>
@@ -47,7 +48,7 @@ export const UploadMultiImg = ({
       }
       {
         uploadedImgsData.imgsUploadedData?.length > 0 ? (
-          <div className={`multi-img-preview d-flex align-items-center ${previewPosition === "center" && "justify-content-center"}`}>
+          <div className={`multi-img-preview d-flex align-items-center ${previewPosition === "center" && "justify-content-center"} overflow-scroll`}>
             <div className="multi-img-track d-flex">
               {
                 uploadedImgsData.imgsUploadedData?.map((val, index) => (

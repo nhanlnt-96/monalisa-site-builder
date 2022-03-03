@@ -19,24 +19,24 @@ export const adminHeaderMenu = [
     label: "Spot",
     path: "spot"
   },
-  // {
-  //   label: "Collections",
-  //   path: "collections"
-  // },
-  // {
-  //   label: "FAQ",
-  //   path: "faq"
-  // },
-  // {
-  //   label: "Team",
-  //   path: "team"
-  // },
-  // {
-  //   label: "Rarity",
-  //   path: "rarity"
-  // },
-  // {
-  //   label: "Contact",
-  //   path: "contact"
-  // },
+  {
+    label: "Collections",
+    path: "collections"
+  },
+  {
+    label: "The Specs",
+    path: "the-specs"
+  },
+  {
+    label: "Drops",
+    path: "drops"
+  },
+  {
+    label: "Team",
+    path: "team"
+  },
+  {
+    label: "FAQ",
+    path: "faq"
+  },
 ];

@@ -50,6 +50,10 @@ export const adminRoutes = {
       path: "spot",
       module: <SpotEditor/>
     },
+    {
+      path: "collections",
+      module: <CollectionsEditor/>
+    }
     // {
     //   path: "faq",
     //   module: <FaqEditor/>
@@ -58,9 +62,5 @@ export const adminRoutes = {
     //   path: "team",
     //   module: <TeamEditor/>
     // },
-    // {
-    //   path: "collections",
-    //   module: <CollectionsEditor/>
-    // }
   ]
 };

@@ -94,6 +94,11 @@ export const removeImgsUploaded = (imgFolder, imageName, imageId, imgData) => {
             dispatch(getAboutContent());
             dispatch(uploadImgsSuccess(imgData));
           });
+        case "collections":
+          return await api.delete(`${imgFolder}/images/${imageId}`).then(() => {
+            dispatch(getCollectionsContent());
+            dispatch(uploadImgsSuccess(imgData));
+          });
         default:
           return await api.delete(`${imgFolder}/${imageId}`).then(() => {
             dispatch(getCollectionsContent());

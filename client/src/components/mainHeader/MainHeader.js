@@ -50,7 +50,6 @@ const MainHeader = () => {
                         </svg>
                       </a>
                     </li>
-                    
                     <li className="bg-white p-1.5 rounded-sm hover:ring-2 hover:ring-primary">
                       <a href="https://t.me/monalisaverse">
                         <svg
@@ -64,7 +63,6 @@ const MainHeader = () => {
                         </svg>
                       </a>
                     </li>
-                    
                     <li className="bg-white p-1.5 rounded-sm hover:ring-2 hover:ring-primary">
                       <a
                         href="https://discord.gg/KbEtpY4EVS "

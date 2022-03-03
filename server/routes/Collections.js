@@ -4,7 +4,8 @@ const {
   validationResult
 } = require("express-validator");
 const {
-  Collections
+  Collections,
+  CollectionsDetail,
 } = require("../models");
 const {
   ApiError,
@@ -14,12 +15,30 @@ const {validateToken} = require("../middleware/authentication");
 
 const router = express.Router();
 
-router.post("/", validateToken, body("imageName").notEmpty().trim(), body("imageUrl").notEmpty().trim(), async (req, res) => {
+router.post("/general", validateToken, async (req, res) => {
+  const post = req.body;
+  try {
+    const {
+      title,
+      subTitle
+    } = post;
+    if (title || subTitle) {
+      await Collections.create(post);
+    } else {
+      ApiError(400, "Collection's content can not empty.", res);
+    }
+    ApiSuccess(201, post, res);
+  } catch (error) {
+    ApiError(400, error, res);
+  }
+});
+
+router.post("/images", validateToken, body("imageName").notEmpty().trim(), body("imageUrl").notEmpty().trim(), async (req, res) => {
   const errors = validationResult(req);
   const post = req.body;
   try {
     if (errors.isEmpty()) {
-      await Collections.create(post);
+      await CollectionsDetail.create(post);
       ApiSuccess(201, post, res);
     } else {
       ApiError(400, errors.array(), res);
@@ -29,7 +48,34 @@ router.post("/", validateToken, body("imageName").notEmpty().trim(), body("image
   }
 });
 
-router.delete("/:id", validateToken, async (req, res) => {
+router.patch("/update/:id", validateToken, async (req, res) => {
+  const {
+    title,
+    subTitle,
+  } = req.body;
+  const contentId = req.params.id;
+  const checkContentExist = await Collections.findByPk(contentId);
+  
+  try {
+    if (checkContentExist) {
+      await Collections.update({
+        title,
+        subTitle
+      }, {
+        where: {id: contentId},
+        returning: true,
+        plain: true,
+      });
+      ApiSuccess(201, "Updated", res);
+    } else {
+      ApiError(400, "Content not found", res);
+    }
+  } catch (error) {
+    ApiError(400, error, res);
+  }
+});
+
+router.delete("/images/:id", validateToken, async (req, res) => {
   const contentId = req.params.id;
   const checkContentExist = await Collections.findByPk(contentId);
   try {
@@ -45,8 +91,13 @@ router.delete("/:id", validateToken, async (req, res) => {
 });
 
 router.get("/", async (req, res) => {
-  const bannerContent = await Collections.findAll();
-  ApiSuccess(200, bannerContent, res);
+  const collectionsRes = await Collections.findAll();
+  const collectionsContent = collectionsRes[0];
+  const collectionsImgContent = await CollectionsDetail.findAll();
+  ApiSuccess(200, {
+    collectionsContent,
+    collectionsImgContent
+  }, res);
 });
 
 module.exports = router;
