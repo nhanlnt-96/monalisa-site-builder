@@ -11,7 +11,7 @@ const AdminHomepage = () => {
       <Container className="admin-homepage-content d-flex flex-column justify-content-center align-items-center">
         <Row className="d-flex flex-column justify-content-center align-items-center">
           <img src={Logo} alt="logo"/>
-          <h1 className="title">Welcome to <span>Project name</span> Admin page</h1>
+          <h1 className="title">Welcome to <span>Monalisaverse</span> Admin page</h1>
         </Row>
       </Container>
     </Container>
